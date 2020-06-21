@@ -42,11 +42,10 @@ services:
     volumes:
       - /client/node_modules
       - ./client:/client
-    # ports:
-    #   - "4000:80"
-  # nginx:
-  #   image: nginx
-  #   volumes:
-  #     - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-  #   ports:
-  #     - "4000:80"
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "4000:80"

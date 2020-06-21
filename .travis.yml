@@ -1,0 +1,14 @@
+sudo: required
+services:
+  - docker
+
+script:
+  - docker build -t "$DOCKER_USERNAME"/serverapp ./server
+  - docker build -t "$DOCKER_USERNAME"/workerapp ./worker
+  - docker build -t "$DOCKER_USERNAME"/nginx ./nginx
+  - docker build -t "$DOCKER_USERNAME"/clientapp ./client
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push "$DOCKER_USERNAME"/serverapp
+  - docker push "$DOCKER_USERNAME"/workerapp
+  - docker push "$DOCKER_USERNAME"/nginx
+  - docker push "$DOCKER_USERNAME"/clientapp
