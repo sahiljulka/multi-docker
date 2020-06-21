@@ -1,0 +1,6 @@
+When a number is eneterd by user to react app 
+-> nginx 
+-> express server 
+-> store the index in postgres and publish index in redis also->
+-> A worker would be listening to this redis cache and when data comes onto it
+-> It would calculate the fib for this index and put it in redis cache back again
