@@ -12,3 +12,16 @@ script:
   - docker push "$DOCKER_USERNAME"/workerapp
   - docker push "$DOCKER_USERNAME"/nginx
   - docker push "$DOCKER_USERNAME"/clientapp
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: mult-docker
+  env: MultDocker-env-1
+  bucket_name: elasticbeanstalk-us-east-2-096191708657
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  edge: true
